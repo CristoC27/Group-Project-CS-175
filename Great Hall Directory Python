@@ -1,1 +1,5 @@
+floor_1_landmarks = []
+floor_2_landmarks = []
+floor_3_landmarks = []
 
+room = input("Enter room you want directions to: ")
