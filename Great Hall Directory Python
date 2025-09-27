@@ -2,4 +2,25 @@ floor_1_landmarks = []
 floor_2_landmarks = []
 floor_3_landmarks = []
 
-room = input("Enter room you want directions to: ")
+room = ""
+def room_format():
+	global room
+	room = input("Enter room in the Great Hall that you want directions to: ").lower()
+	if "gh" in room:
+		room = room.replace("gh", "")
+		room = room.replace(" ", "")
+		return room
+	return room
+def get_room():
+	global room
+	room_format()
+	while len(room) != 3:
+		print("Invalid input, please ")
+		room_format()
+	room = room[:1] + "," + room[1:]
+	room = room.split(",")
+	room = list(map(int,room))
+	return room
+print(get_room())
+print(f"Floor: {room[0]}")
+print(f"Room: {room[1]}")
