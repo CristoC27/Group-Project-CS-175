@@ -1,6 +1,6 @@
-floor_1_landmarks = []
-floor_2_landmarks = []
-floor_3_landmarks = []
+floor_1_landmarks = ["Main Stairs"]
+floor_2_landmarks = ["Piano","Bust","Table with Flowers"]
+floor_3_landmarks = ["Emergency Police Phone","HR Bulletin Board","Student Employment Door"]
 
 basement_main = {"Aud" : "","Aud2" : "", "W2" : "Office of Admission Processing", "W3" : "", "W4" : "Purchasing Accounts Payable", "W5": "", "W6" : "Withey Chapel"}
 first_main = {"104" : "Julian Francis Abele Room", "106" : "Cafe", "107" : "", "108" : "Financial Aid", "109" : "Office of Admissions","110" : "Bursar's Office/Cashier's Office"}
