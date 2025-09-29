@@ -2,6 +2,16 @@ floor_1_landmarks = []
 floor_2_landmarks = []
 floor_3_landmarks = []
 
+basement_main = {"Aud" : "","Aud2" : "", "W2" : "Office of Admission Processing", "W3" : "", "W4" : "Purchasing Accounts Payable", "W5": "", "W6" : "Withey Chapel"}
+first_main = {"104" : "Julian Francis Abele Room", "106" : "Cafe", "107" : "", "108" : "Financial Aid", "109" : "Office of Admissions","110" : "Bursar's Office/Cashier's Office"}
+second_main = {"201" : "Office of Graduate Admission", "203" : "Office of Conference Services and Special Events/Central Scheduling", "205" : "Institutional Review Board/Institutional Animal Care and Use Committee/Institutional Research & Effectiveness","206" : "Middle States Commission on Higher Education", "207" : "", "208" : "Office of the Registrar","209" : "", "210" : "Associate Provost", "211" : "Provost/Senior VP for Academic Affairs/Director of Academic Finance","213" : "Office of the President","217" : "VP and Chief Business Officer/Associate VP for Finance and Budget","218" : ""}
+third_main = {"301" : "Administrative Offices" , "302" : "Administrative Offices", "303" : "Administrative Offices", "304" : "Vice President and General Counsel", "305" : "Office of Equity & Diversity and Internal Audit", "306": "", "307" : "","308" : "VP for Enrollment Management","309" : "", "310" : "", "311" : "","312" : "Office of Human Resources","313" : "","314" : "", "315" : "","316" : "","317" : "VP for University Advancement","319": "", "320": "","321" : "Stewardship and Donor Relations","322" : "Office of Student Employment"}
+basement_office = {"GHA10" : "", "W011" : "Prof. Aristy-Reyes, Coppola, Hamlet, Kachinsky, O’Connell, Rubin, and Varga","W012" : "Prof. Fabian, Bates, Tepedino, and Van Clef","W013" : "Prof. Gold","W014" : "","W015" : "Prof. Zaldotti","W016" : "Under Construction","W017" : "Under Construction"}
+first_office = {"W22" : "Department of English"}
+half_office = {"400" : "","401" : "","402" : "Prof. Vurro","403" : "Prof. Graedon","404" : "Dr. Fury","405" : "Prof. Cook and Prof. Belinski","406" : "Dr. Goulding","407" : "Prof. Jacomme and Dr. Sood","408" : "Prof. Swanson and Prof. Bogert","409" : "Dr. Vetere","410" : "Prof. Vercher","411" : "Dr. Womack, MFA Program Director"}
+second_office = {"501" : "Dr. Gilmartin, Department Advising Coordinator and Prof. Pachucki","502" : "Dr. Blair", "503" : "Prof. Torchia and Prof. Marousis-Bush","504" : "Dr. Siracusa and Dr. Biesiada","505" : "Dr. Werner Director of First Year Composition","506" : "Prof. Sacks and Prof. Wedlock", "507" : "Dr. Love, Associate Director of First Year Composition","508" : "Dr. Starke, Undergraduate Program Coordinator","509" : "Dr. Bluemel","510" : "","511" : "Copy Room"}
+
+
 room = ""
 def room_format():
 	global room
@@ -24,105 +34,3 @@ def get_room():
 print(get_room())
 print(f"Floor: {room[0]}")
 print(f"Room: {room[1]}")
-
-main_floors = {
-    "Basement": [
-        "Aud",
-        "Aud2",
-        "W2 Office of Admission Processing",
-        "W3",
-        "W4 Purchasing Accounts Payable",
-        "W5",
-        "W6 Withey Chapel"
-    ],
-
-    "First Floor": [
-        "104 Julian Francis Abele Room",
-        "106 Cafe",
-        "107",
-        "108 Financial Aid",
-        "109 Office of Admissions",
-        "110 Bursars Office/Cashiers Office"
-    ],
-
-    "Second Floor": [
-        "201 Office of Graduate Admission",
-        "203 Office of Conference Services and Special Events/ Central Scheduling",
-        "205 Institutional Review Board/ Institutional Animal Care and Use Committee/ Institutional Research & Effectiveness",
-        "206 Middle States Commission on Higher Education",
-        "207",
-        "208 Office of the Registrar",
-        "209",
-        "210 Associate Provost",
-        "211 Provost/ Senior VP for Academic Affairs/ Director of Academic Finance",
-        "213 Office of the President",
-        "217 VP and Chief Business Officer/ Associate VP for Finance and Budget",
-        "218"
-    ],
-
-    "Third Floor": [
-        "301-303 Administrative Offices",
-        "304 Vice President and General Counsel",
-        "305 Office of Equity & Diversity and Internal Audit",
-        "306", "307",
-        "308 VP for Enrollment Management",
-        "309", "310", "311",
-        "312 Office of Human Resources",
-        "313", 
-"314", "315", 
-         "316",
-        "317 VP for University Advancement",
-        "319", "320",
-        "321 Stewardship and Donor Relations",
-        "322 Office of Student Employment"
-    ]
-}
-
-office_floors = {
-    "Basement": [
-        "GHA10",
-        "W011 Prof Aristy-Reyes, Coppola, Hamlet, Kachinsky, O’Connell, Rubin, and Varga",
-        "W012 Prof Fabian, Bates, Tepedino, and Van Clef",
-        "W013 Prof Gold",
-        "W014",
-        "W015 Prof Zaldotti",
-        "W016 Under Construction",
-        "W017 Under Construction"
-    ],
-
-    "First Floor": [
-        "W22 Department of English"
-    ],
-
-    "Floor 1.5": [
-        "400",
-        "401",
-        "402 Prof Vurro",
-        "403 Prof Graedon",
-        "404 Dr Fury",
-        "405 Prof Cook and Prof Belinski",
-        "406 Dr Goulding",
-        "407 Prof Jacomme and Dr Sood",
-        "408 Prof Swanson and Prof Bogert",
-        "409 Dr Vetere",
-        "410 Prof Vercher",
-        "411 Dr Womack, MFA Program Director"
-    ],
-
-    "Second Floor": [
-        "501 Dr Gilmartin, Department Advising Coordinator and Prof Pachucki",
-        "502 Dr Blair",
-        "503 Prof Torchia and Prof Marousis-Bush",
-        "504 Dr. Siracusa and Dr Biesiada",
-        "505 Dr. Werner Director of First Year Composition",
-        "506 Prof. Sacks and Prof. Wedlock",
-        "507 Dr. Love, Associate Director of First Year Composition",
-        "508 Dr. Starke, Undergraduate Program Coordinator",
-        "509 Dr. Bluemel",
-        "510",
-        "511 Copy Room"
-    ]
-}
-
-
-
