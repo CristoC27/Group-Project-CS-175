@@ -7,6 +7,11 @@ Thursday Sep 25, 2025
 Map has been drawn up and landmarks have been located and noted. Next we need to start the code. Taking an input and dividing it into its floor and room would be a good start. 
 
 Scrum 3: 
-Monday 29, 2025
+Monday Sep 29, 2025
 Dictionaries have been created using the room numbers as keys and their names as the values. Inputs are now divided into floor and room (This may or may not remain in the release version). 
 Code needs to be able to determine if the input room is in the dictioanries. If not, it should prompt the user for another room. Map needs to be created digitally to be used in program as a visual aid.
+
+Scrum 4: 
+Thursday Oct 2, 2025
+Maps are being worked on. Program can now check if inputs are in dictionaries and report if they are found. Program can find bathrooms now. Bug fixes done. 
+Next we need to make the program be able to direct students to the rooms they want to find.
