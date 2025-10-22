@@ -34,7 +34,7 @@ seventh = "seventh room on the"
 eighth = "eighth room on the"
 destination = "your destination is the"
 
-bath_floors = ["B","1","2","3"]
+bath_floors = ["B","2"]
 room = ""
 room_list = ""
 # Takes input and formats it to be usable by program and returns it to get_room() function
@@ -109,7 +109,7 @@ def direct_f2(r):
 	if r == "201":
 		print(f"{start} {up} {main_stairs} {right_turn} {up} {small_stair} {left_turn} {destination} {second} left")
 	if r == "203":
-		print(f"{start} {up} {main_stairs} {right_turn} {up} {small_stair} {left_turn} {straight} turn right at the end of the hallway, {straight} turn left at the end of the hallway, {straight} {left_turn} {straight} {right_turn} {straight} {left_turn} {destination} on the right")
+		print(f"{start} {up} {main_stairs} {right_turn} {up} {small_stair} {left_turn} {straight} turn right at the end of the hallway, {straight} turn left at the end of the hallway, {straight} turn left at the end of the hallway, {destination} room on the right")
 	if r == "205":
 		print(f"{start} {up} {main_stairs} {right_turn} {up} {small_stair} {left_turn} {straight} turn right at the end of the hallway, {destination} room in front of you")
 	if r == "206":
@@ -245,8 +245,25 @@ def direct_ob(r):
 	# Prints directions to bathrooms
 def direct_bath(f):
 	if f == "B":
-		print("Directions to Mens Bathroom In Basement")
-		print(f"{start} {down} {main_stairs} {left_turn} {straight} at first room on left {left_turn} {straight} ")
+		print("\nDirections to Men's Bathroom in basement:")
+		print(f"{start} {down} {main_stairs} {left_turn} {straight} at first room on left {left_turn} {straight} {right_turn} {straight} {destination} room on the left")
+		print("\nDirections to Women's Bathroom in Basement:")
+		print(f"{start} {down} {main_stairs} {right_turn} {straight} {destination} room in front of you")
+		print("\nDirections to Gender Neutral Bathroom in Basement:")
+		print(f"{start} {down} {main_stairs} {right_turn} {straight} {destination} room on the left at the end of the hallway")
+		print("\nDirections to Gender Neutral Bathroom in Basement (Office Side):")
+		print(f"{start} {up} {main_stairs} {left_turn} {up} {small_stair} {right_turn} {straight} go through the door and {right_turn} to the end of the hallway {straight} {left_turn} {straight} {down} {stairs} basement and {destination} room in front of you")
+
+	if f == "2":
+		print("\nDirections to Women's Bathroom on Second Floor")
+		print(f"{start} {up} {main_stairs} {right_turn} {up} {small_stair} {left_turn} {straight} turn right at the end of the hallway, {straight} turn left at the end of the hallway, {straight} turn left at the end of the hallway, {straight} turn right at the end of the hallway, {destination} room in front of you")
+		print("\nDirections to Men's Bathroom on Second Floor")
+		print(f"{start} {up} {main_stairs} {right_turn} {up} {small_stair} {left_turn} {straight} turn right at the end of the hallway, {straight} turn left at the end of the hallway, {straight} turn right at the end of the hallway, {straight} {left_turn} {destination} room in front of you")
+		print("\nDirections to Women's Bathroom on Second Floor (Office Side):")
+		print(f"{start} {up} {main_stairs} {left_turn} {up} {small_stair} {right_turn} {straight} go through the door and {right_turn} to the end of the hallway {straight} {left_turn} {straight} {destination} {fifth} right ")
+		print("\nDirections to Gender Neutral Bathroom on Second Floor (Office Side):")
+		print(f"{start} {up} {main_stairs} {left_turn} {up} {small_stair} {right_turn} {straight} go through the door and {right_turn} to the end of the hallway {straight} {left_turn} {straight} {destination} {sixth} right ")
+
 
 
 found = False
@@ -255,13 +272,14 @@ while not found:
 # Will find bathroom on given level when print directions
 	if room == "BATHROOM":
 		found = True
-		print("1B: B\n1F: 1\n2F: 2\n3F: 3")
+		print("1B: B\n2F: 2")
 		bath_floor = input("what floor do you want to find a bathroom on?: ").upper()
 		while bath_floor not in bath_floors:
-			print("Bathroom not found, please enter a valid floor")
-			print("1B: B\n1F: 1\n2F: 2\n3F: 3")
+			print("There is no bathroom on that floor, please enter a valid floor")
+			print("1B: B\n2F: 2")
 			bath_floor = input("what floor do you want to find a bathroom on?: ").upper()
 		print("FOUND")
+		direct_bath(bath_floor)
 	else:
 # Determines if room is in dictionaries and therefore in building
 		for floor in dicts:
