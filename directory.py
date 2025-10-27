@@ -1,7 +1,3 @@
-floor_1_landmarks = ["Main Stairs"]
-floor_2_landmarks = ["Piano","Bust","Table with Flowers"]
-floor_3_landmarks = ["Emergency Police Phone","HR Bulletin Board","Student Employment Door"]
-
 # Dictionaries contain room numbers and names associated with that room
 basement_main = {"GHA10" : "", "AUD" : "", "W2" : "Office of Admission Processing", "W3" : "", "W4" : "Purchasing Accounts Payable", "W5": "", "W6" : "Withey Chapel"}
 first_main = {"104" : "Julian Francis Abele Room", "106" : "Cafe", "107" : "", "108" : "Financial Aid", "109" : "Office of Admissions","110" : "Bursar's Office/Cashier's Office"}
@@ -36,11 +32,12 @@ destination = "your destination is the"
 
 bath_floors = ["B","2"]
 room = ""
-room_list = ""
 # Takes input and formats it to be usable by program and returns it to get_room() function
-def room_format():
+async def room_format():
 	global room
-	room = input("Enter room in the Great Hall that you want directions to : ").upper()
+	room = await input("Enter room in the Great Hall that you want directions to : ")
+	room = str(room)
+	room = room.upper()
 	if "GH" in room:
 		room = room.replace("GH", "")
 	if "ROOM" in room:
@@ -48,10 +45,9 @@ def room_format():
 	room = room.replace(" ", "")
 	return room
 # Changes input further to match dictionary keys and returns room number
-def get_room():
+async def get_room():
 	global room
-	global room_list
-	room_format()
+	await room_format()
 	if "BATH" in room or "REST" in room:
 		room = "BATHROOM"
 		return room
@@ -65,15 +61,14 @@ def get_room():
 		return room
 	while len(room) != 3 and room.isdigit():
 		print("Room not found, please enter new room,")
-		room_format()
-	if room.isdigit():
-		room_list = room[:1] + "," + room[1:]
-		room_list = room_list.split(",")
-		room_list = list(map(int,room_list))
-		return room, room_list
+		await room_format()
+
 # Prints directions to main rooms on basement level
 def direct_b1(r):
-	print(f"Directions to room {r} {basement_main[r]}:")
+	if basement_main[r] == "":
+		print(f"Directions to room {r} {basement_main[r]}:\n")
+	else:
+		print(f"Directions to room {r} \n{basement_main[r]}:\n")
 	if r == "GHA10":
 		print(f"{start} {up} {main_stairs} {left_turn} {up} {small_stair} {right_turn} {straight} go through the door and {right_turn} to the end of the hallway {straight} {left_turn} {straight} {down} {stairs} basement and {straight} {left_turn} {straight} {destination} room in front of you")
 	elif r == "AUD":
@@ -90,7 +85,10 @@ def direct_b1(r):
 		print(f"{start} {down} {main_stairs} {left_turn} {straight} {destination} {second} left")
 # Prints directions to main rooms on first level
 def direct_f1(r):
-	print(f"Directions to room {r} {first_main[r]}:")
+	if first_main[r] == "":
+		print(f"Directions to room {r} {first_main[r]}:\n")
+	else:
+		print(f"Directions to room {r} \n{first_main[r]}:\n")
 	if r == "104":
 		print(f"{start} go past {main_stairs} {right_turn} {straight} {destination} {first} left")
 	if r == "106":
@@ -105,7 +103,10 @@ def direct_f1(r):
 		print(f"{start} go past the cafe, {right_turn} {straight} {right_turn} {straight} {destination} {second} left")
 # Prints directions to main rooms on second level
 def direct_f2(r):
-	print(f"Directions to room {r} {second_main[r]}:")
+	if second_main[r] == "":
+		print(f"Directions to room {r} {second_main[r]}:\n")
+	else:
+		print(f"Directions to room {r} \n{second_main[r]}:\n")
 	if r == "201":
 		print(f"{start} {up} {main_stairs} {right_turn} {up} {small_stair} {left_turn} {destination} {second} left")
 	if r == "203":
@@ -132,7 +133,10 @@ def direct_f2(r):
 		print(f"{start} {up} {main_stairs} {left_turn} {up} {small_stair} {right_turn} {destination} {first} right")
 # Prints directions to main rooms on third level
 def direct_f3(r):
-	print(f"Directions to room {r} {third_main[r]}:")
+	if third_main[r] == "":
+		print(f"Directions to room {r} {third_main[r]}:\n")
+	else:
+		print(f"Directions to room {r} \n{third_main[r]}:\n")
 	if r == "301" or r == "302" or r == "303":
 		print(f"{start} {up} {main_stairs} {right_turn} {up} {small_stair} {left_turn} go through the first door on the left, {up} {stairs} third floor and go through the door and {destination} room on the left")
 	if r == "304":
@@ -173,7 +177,10 @@ def direct_f3(r):
 		print(f"{start} {up} {main_stairs} {right_turn} {up} {small_stair} {left_turn} go through the first door on the left, {up} {stairs} third floor and go through the door and {right_turn} {straight} {right_turn} {straight} {destination} {first} right")
 # Prints directions to office rooms on second floor
 def direct_o2(r):
-	print(f"Directions to room {r} {second_office[r]}:")
+	if second_office[r] == "":
+		print(f"Directions to room {r} {second_office[r]}:\n")
+	else:
+		print(f"Directions to room {r} \n{second_office[r]}:\n")
 	if r == "501":
 		print(f"{start} {up} {main_stairs} {left_turn} {up} {small_stair} {right_turn} {straight} go through the door and {right_turn} to the end of the hallway {straight} {left_turn} {straight} {destination} {seventh} left ")
 	if r == "502":
@@ -198,7 +205,10 @@ def direct_o2(r):
 		print(f"{start} {up} {main_stairs} {left_turn} {up} {small_stair} {right_turn} {straight} go through the door and {right_turn} to the end of the hallway {straight} {left_turn} {straight} {destination} {sixth} left ")
 # Prints directions to office rooms on 1.5th floor
 def direct_o15(r):
-	print(f"Directions to room {r} {half_office[r]}:")
+	if half_office[r] == "":
+		print(f"Directions to room {r} {half_office[r]}:\n")
+	else:
+		print(f"Directions to room {r} \n{half_office[r]}:\n")
 	if r == "400":
 		print(f"{start} {up} {main_stairs} {left_turn} {up} {small_stair} {right_turn} {straight} go through the door and {right_turn} to the end of the hallway {straight} {left_turn} {straight} {down} {stairs} next level and {destination} room in front of you")
 	if r == "401":
@@ -225,11 +235,14 @@ def direct_o15(r):
 		print(f"{start} {up} {main_stairs} {left_turn} {up} {small_stair} {right_turn} {straight} go through the door and {right_turn} to the end of the hallway {straight} {left_turn} {straight} {down} {stairs} next level and {left_turn} {straight} {destination} {second} left")
 # Prints directions to office room on first floor
 def direct_o1(r):
-	print(f"Directions to room {r} {first_office[r]}:")
+	print(f"Directions to room {r} \n{first_office[r]}:\n")
 	print(f"{start} {up} {main_stairs} {left_turn} {up} {small_stair} {right_turn} {straight} go through the door and {right_turn} to the end of the hallway {straight} {left_turn} {straight} {down} {stairs} first floor and {destination} room on the left")
 # Prints directions to office rooms on basement level
 def direct_ob(r):
-	print(f"Directions to room {r} {basement_office[r]}:")
+	if basement_office[r] == "":
+		print(f"Directions to room {r} {basement_office[r]}:\n")
+	else:
+		print(f"Directions to room {r} \n{basement_office[r]}:\n")
 	if r == "W11":
 		print(f"{start} {up} {main_stairs} {left_turn} {up} {small_stair} {right_turn} {straight} go through the door and {right_turn} to the end of the hallway {straight} {left_turn} {straight} {down} {stairs} basement and {destination} room on the left")
 	if r == "W12":
@@ -245,64 +258,69 @@ def direct_ob(r):
 	# Prints directions to bathrooms
 def direct_bath(f):
 	if f == "B":
-		print("\nDirections to Men's Bathroom in basement:")
+		print("\nDirections to Men's Bathroom in basement:\n")
 		print(f"{start} {down} {main_stairs} {left_turn} {straight} at first room on left {left_turn} {straight} {right_turn} {straight} {destination} room on the left")
-		print("\nDirections to Women's Bathroom in Basement:")
+		print("\nDirections to Women's Bathroom in Basement:\n")
 		print(f"{start} {down} {main_stairs} {right_turn} {straight} {destination} room in front of you")
-		print("\nDirections to Gender Neutral Bathroom in Basement:")
+		print("\nDirections to Gender Neutral Bathroom in Basement:\n")
 		print(f"{start} {down} {main_stairs} {right_turn} {straight} {destination} room on the left at the end of the hallway")
-		print("\nDirections to Gender Neutral Bathroom in Basement (Office Side):")
+		print("\nDirections to Gender Neutral Bathroom in Basement (Office Side):\n")
 		print(f"{start} {up} {main_stairs} {left_turn} {up} {small_stair} {right_turn} {straight} go through the door and {right_turn} to the end of the hallway {straight} {left_turn} {straight} {down} {stairs} basement and {destination} room in front of you")
 
 	if f == "2":
-		print("\nDirections to Women's Bathroom on Second Floor")
+		print("\nDirections to Women's Bathroom on Second Floor:\n")
 		print(f"{start} {up} {main_stairs} {right_turn} {up} {small_stair} {left_turn} {straight} turn right at the end of the hallway, {straight} turn left at the end of the hallway, {straight} turn left at the end of the hallway, {straight} turn right at the end of the hallway, {destination} room in front of you")
-		print("\nDirections to Men's Bathroom on Second Floor")
+		print("\nDirections to Men's Bathroom on Second Floor:\n")
 		print(f"{start} {up} {main_stairs} {right_turn} {up} {small_stair} {left_turn} {straight} turn right at the end of the hallway, {straight} turn left at the end of the hallway, {straight} turn right at the end of the hallway, {straight} {left_turn} {destination} room in front of you")
-		print("\nDirections to Women's Bathroom on Second Floor (Office Side):")
+		print("\nDirections to Women's Bathroom on Second Floor (Office Side):\n")
 		print(f"{start} {up} {main_stairs} {left_turn} {up} {small_stair} {right_turn} {straight} go through the door and {right_turn} to the end of the hallway {straight} {left_turn} {straight} {destination} {fifth} right ")
-		print("\nDirections to Gender Neutral Bathroom on Second Floor (Office Side):")
+		print("\nDirections to Gender Neutral Bathroom on Second Floor (Office Side):\n")
 		print(f"{start} {up} {main_stairs} {left_turn} {up} {small_stair} {right_turn} {straight} go through the door and {right_turn} to the end of the hallway {straight} {left_turn} {straight} {destination} {sixth} right ")
 
 
-
-found = False
-while not found:
-	get_room()
-# Will find bathroom on given level when print directions
-	if room == "BATHROOM":
-		found = True
-		print("1B: B\n2F: 2")
-		bath_floor = input("what floor do you want to find a bathroom on?: ").upper()
-		while bath_floor not in bath_floors:
-			print("There is no bathroom on that floor, please enter a valid floor")
+while True:
+	print("")
+	found = False
+	while not found:
+		await get_room()
+	# Will find bathroom on given level when print directions
+		if room == "BATHROOM":
+			found = True
 			print("1B: B\n2F: 2")
-			bath_floor = input("what floor do you want to find a bathroom on?: ").upper()
-		print("FOUND")
-		direct_bath(bath_floor)
-	else:
-# Determines if room is in dictionaries and therefore in building
-		for floor in dicts:
-			if room in floor:
-				found = True
-				print("FOUND!")
-		if not found:
-			print("Room not found, please enter new room")
-print("")
-# Calls a direction function based on what dictionary the room is found in
-if room in basement_main:
-	direct_b1(room)
-if room in first_main:
-	direct_f1(room)
-if room in second_main:
-	direct_f2(room)
-if room in third_main:
-	direct_f3(room)
-if room in second_office:
-	direct_o2(room)
-if room in half_office:
-	direct_o15(room)
-if room in first_office:
-	direct_o1(room)
-if room in basement_office:
-	direct_ob(room)
+			bath_floor = await input("what floor do you want to find a bathroom on?: ")
+			bath_floor = str(bath_floor)
+			bath_floor = bath_floor.upper()
+			while bath_floor not in bath_floors:
+				print("There is no bathroom on that floor, please enter a valid floor")
+				print("1B: B\n2F: 2")
+				bath_floor = await input("what floor do you want to find a bathroom on?: ")
+				bath_floor = str(bath_floor)
+				bath_floor = bath_floor.upper()
+			print("FOUND")
+			direct_bath(bath_floor)
+		else:
+	# Determines if room is in dictionaries and therefore in building
+			for floor in dicts:
+				if room in floor:
+					found = True
+					print("FOUND!")
+			if not found:
+				print("Room not found, please enter new room")
+	print("")
+	# Calls a direction function based on what dictionary the room is found in
+	if room in basement_main:
+		direct_b1(room)
+	if room in first_main:
+		direct_f1(room)
+	if room in second_main:
+		direct_f2(room)
+	if room in third_main:
+		direct_f3(room)
+	if room in second_office:
+		direct_o2(room)
+	if room in half_office:
+		direct_o15(room)
+	if room in first_office:
+		direct_o1(room)
+	if room in basement_office:
+		direct_ob(room)
