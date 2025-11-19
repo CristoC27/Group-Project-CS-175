@@ -35,7 +35,7 @@ room = ""
 # Takes input and formats it to be usable by program and returns it to get_room() function
 async def room_format():
 	global room
-	room = await input("Enter room in the Great Hall that you want directions to : ")
+	room = input("Enter room in the Great Hall that you want directions to : ")
 	room = str(room)
 	room = room.upper()
 	if "GH" in room:
@@ -287,13 +287,13 @@ while True:
 		if room == "BATHROOM":
 			found = True
 			print("1B: B\n2F: 2")
-			bath_floor = await input("what floor do you want to find a bathroom on?: ")
+			bath_floor = input("what floor do you want to find a bathroom on?: ")
 			bath_floor = str(bath_floor)
 			bath_floor = bath_floor.upper()
 			while bath_floor not in bath_floors:
 				print("There is no bathroom on that floor, please enter a valid floor")
 				print("1B: B\n2F: 2")
-				bath_floor = await input("what floor do you want to find a bathroom on?: ")
+				bath_floor = input("what floor do you want to find a bathroom on?: ")
 				bath_floor = str(bath_floor)
 				bath_floor = bath_floor.upper()
 			print("FOUND")
