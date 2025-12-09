@@ -259,7 +259,7 @@ def direct_ob(r):
 def direct_bath(f):
 	if f == "B":
 		print("\nDirections to Men's Bathroom in basement:\n")
-		print(f"{start} {down} {main_stairs} {left_turn} {straight} at first room on left {left_turn} {straight} {right_turn} {straight} {destination} room on the left")
+		print(f"{start} {down} {main_stairs} {left_turn} {straight} at first room on the left, {left_turn} {straight} {right_turn} {straight} {destination} room on the left")
 		print("\nDirections to Women's Bathroom in Basement:\n")
 		print(f"{start} {down} {main_stairs} {right_turn} {straight} {destination} room in front of you")
 		print("\nDirections to Gender Neutral Bathroom in Basement:\n")
